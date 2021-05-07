@@ -58,13 +58,13 @@ public class ChangePasswordFragment extends Fragment {
             db.getQueryExecutor().execute(() -> {
                 User usr = db.userDao().loadByEmail(username);
                 String pass = currentPass.getText().toString();
-                if(pass != usr.password){
+                if(!pass.equals(usr.password)){
                     getActivity().runOnUiThread(()->{
                         currentPass.setError("Mật khẩu hiện tại không đúng");
                     });
                     return;
                 }
-                if(confirmPass.getText().toString() != newPass.getText().toString()){
+                if(!confirmPass.getText().toString().equals(newPass.getText().toString())){
                     getActivity().runOnUiThread(()->{
                         confirmPass.setError("Mật khẩu không giống");
                     });
