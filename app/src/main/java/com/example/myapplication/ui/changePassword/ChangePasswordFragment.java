@@ -64,6 +64,14 @@ public class ChangePasswordFragment extends Fragment {
                     });
                     return;
                 }
+
+                if(pass.equals(confirmPass.getText().toString())){
+                    getActivity().runOnUiThread(()->{
+                        currentPass.setError("Mật khẩu mới không được giống mật khẩu cũ");
+                    });
+                    return;
+                }
+
                 if(!confirmPass.getText().toString().equals(newPass.getText().toString())){
                     getActivity().runOnUiThread(()->{
                         confirmPass.setError("Mật khẩu không giống");

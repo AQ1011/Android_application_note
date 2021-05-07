@@ -21,7 +21,8 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:ems="10"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:hint="Enter your first name"/>
 
         <EditText
             android:id="@+id/ed_edit_lastname"
@@ -29,7 +30,8 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:ems="10"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:hint="Enter your last name" />
 
         <EditText
             android:id="@+id/ed_edit_email"
@@ -37,7 +39,8 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:ems="10"
-            android:inputType="textPersonName" />
+            android:inputType="textEmailAddress"
+            android:hint="Enter your email"/>
 
         <LinearLayout
             android:layout_width="match_parent"
