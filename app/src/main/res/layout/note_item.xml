@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_note_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name: " />
+
+    <TextView
+        android:id="@+id/tv_note_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Category: " />
+
+    <TextView
+        android:id="@+id/tv_note_priority"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Priority: " />
+
+    <TextView
+        android:id="@+id/tv_note_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Status: " />
+
+    <TextView
+        android:id="@+id/tv_note_plan_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Plan date: " />
+
+    <TextView
+        android:id="@+id/tv_note_created_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Created date: " />
+</androidx.appcompat.widget.LinearLayoutCompat>
