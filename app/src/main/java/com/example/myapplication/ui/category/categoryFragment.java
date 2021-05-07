@@ -1,6 +1,8 @@
 package com.example.myapplication.ui.category;
 
 import android.app.AlertDialog;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myapplication.R;
 import com.example.myapplication.database.AppDatabase;
 import com.example.myapplication.database.Category;
+import com.example.myapplication.database.User;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
@@ -43,16 +46,16 @@ public class categoryFragment extends Fragment {
 
         RecyclerView categoryView = root.findViewById(R.id.recycle_view_category);
 
-        NavigationView navigationView = getActivity().findViewById(R.id.nav_view);
 
-        View header = navigationView.getHeaderView(0);
+        SharedPreferences sharedPref = getContext().getSharedPreferences("NOTE_SHARED_PREFERENCE"
+                , Context.MODE_PRIVATE);
 
-        TextView tv_username = header.findViewById(R.id.tv_username);
+        String user = sharedPref.getString("username","Default name");
+        int userId = sharedPref.getInt("userId", 0);
 
-        user = tv_username.getText().toString();
 
         db.getQueryExecutor().execute(() -> {
-            categories = db.categoryDao().getUserCategory(user);
+            categories = db.categoryDao().getUserCategory(userId);
             getActivity().runOnUiThread(() -> {
                 categoryAdapter = new CategoryAdapter(categories);
                 categoryView.setAdapter(categoryAdapter);
@@ -75,9 +78,9 @@ public class categoryFragment extends Fragment {
             Category c = new Category();
             c.name = edCategory.getText().toString();
             c.created_date = LocalDateTime.now().toString();
-            c.user = this.user;
+            c.user = userId;
             AppDatabase.databaseWriteExecutor.execute(()->{
-                if(db.categoryDao().find(c.name, c.user) != null) {
+                if(db.categoryDao().find(c.name, userId) != null) {
                     getActivity().runOnUiThread(() -> {
                         Toast.makeText(getContext(), "Đã tồn tại category này", Toast.LENGTH_SHORT).show();
                     });

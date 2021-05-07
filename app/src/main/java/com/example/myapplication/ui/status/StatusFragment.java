@@ -1,6 +1,8 @@
 package com.example.myapplication.ui.status;
 
 import android.app.AlertDialog;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,8 +42,14 @@ public class StatusFragment extends Fragment {
 
         RecyclerView categoryView = root.findViewById(R.id.recycle_view_status);
 
+        SharedPreferences sharedPref = getContext().getSharedPreferences("NOTE_SHARED_PREFERENCE"
+                , Context.MODE_PRIVATE);
+
+        String username = sharedPref.getString("username","Default name");
+        int userId = sharedPref.getInt("userId", 0);
+
         db.getQueryExecutor().execute(() -> {
-            statuses = db.statusDao().getAll();
+            statuses = db.statusDao().getUserStatus(userId);
             this.getActivity().runOnUiThread(() -> {
                 statusAdapter = new StatusAdapter(statuses);
                 categoryView.setAdapter(statusAdapter);
@@ -58,12 +66,14 @@ public class StatusFragment extends Fragment {
         tv.setText("Status Form");
         al.setView(view);
 
+
         btnAdd.setOnClickListener(v1 -> {
             Status c = new Status();
             c.name = edCategory.getText().toString();
             c.created_date = LocalDateTime.now().toString();
+            c.user = userId;
             AppDatabase.databaseWriteExecutor.execute(()->{
-                if(db.statusDao().findName(c.name) != null) {
+                if(db.statusDao().findNameUser(c.name, userId) != null) {
                     getActivity().runOnUiThread(() -> {
                         Toast.makeText(getContext(), "Đã tồn tại status này", Toast.LENGTH_SHORT).show();
                     });

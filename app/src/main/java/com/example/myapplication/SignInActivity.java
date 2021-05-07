@@ -68,10 +68,11 @@ public class SignInActivity extends AppCompatActivity {
         }
         if(u.password.equals(edPassword.getText().toString())) {
             Intent intent = new Intent(this, MainActivity.class);
-
+            int userId = db.userDao().loadByEmail(edUsername.getText().toString()).id;
             SharedPreferences sharedPref = getSharedPreferences("NOTE_SHARED_PREFERENCE",Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPref.edit();
             editor.putString("username",edUsername.getText().toString());
+            editor.putInt("userId",userId);
             editor.apply();
 
             this.startActivity(intent);

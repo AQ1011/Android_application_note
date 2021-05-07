@@ -54,7 +54,7 @@ public class EditProfileFragment extends Fragment {
             db.getQueryExecutor().execute(() -> {
                 User usr = db.userDao().loadByEmail(username);
 
-                if(!email.getText().toString().equals(usr.email)){
+                if(email.getText().toString().equals(usr.email)){
                     getActivity().runOnUiThread(()->{
                         firstName.setError("Email đã được đăng ký");
                     });

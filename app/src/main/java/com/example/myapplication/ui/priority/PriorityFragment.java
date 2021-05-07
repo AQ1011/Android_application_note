@@ -1,6 +1,8 @@
 package com.example.myapplication.ui.priority;
 
 import android.app.AlertDialog;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,8 +42,14 @@ public class PriorityFragment extends Fragment {
 
         RecyclerView categoryView = root.findViewById(R.id.recycle_view_prioriy);
 
+        SharedPreferences sharedPref = getContext().getSharedPreferences("NOTE_SHARED_PREFERENCE"
+                , Context.MODE_PRIVATE);
+
+        String user = sharedPref.getString("username","Default name");
+        int userId = sharedPref.getInt("userId", 0);
+
         db.getQueryExecutor().execute(() -> {
-            priorities = db.priorityDao().getAll();
+            priorities = db.priorityDao().getUserPriority(userId);
             this.getActivity().runOnUiThread(() -> {
                 priorityAdapter = new PriorityAdapter(priorities);
                 categoryView.setAdapter(priorityAdapter);
@@ -63,8 +71,9 @@ public class PriorityFragment extends Fragment {
             Priority c = new Priority();
             c.name = edCategory.getText().toString();
             c.created_date = LocalDateTime.now().toString();
+            c.user = userId;
             AppDatabase.databaseWriteExecutor.execute(()->{
-                if(db.priorityDao().findName(c.name) != null) {
+                if(db.priorityDao().findNameUser(c.name, userId) != null) {
                     getActivity().runOnUiThread(() -> {
                         Toast.makeText(getContext(), "Đã tồn tại priority này", Toast.LENGTH_SHORT).show();
                     });

@@ -19,11 +19,11 @@ public interface StatusDao {
     @Query("SELECT * FROM status WHERE id = :id")
     Status find(int id);
 
-    @Query("SELECT * FROM status WHERE name = :name")
-    Status findName(String name);
+    @Query("SELECT * FROM status WHERE name = :name AND user = :userId")
+    Status findNameUser(String name, int userId);
 
-    @Query("SELECT * FROM categories WHERE user = :username")
-    List<Category> getUserStatus(String username);
+    @Query("SELECT * FROM status WHERE user = :userId")
+    List<Status> getUserStatus(int userId);
 
     @Insert
     void insert(Status status);

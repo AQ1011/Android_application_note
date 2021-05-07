@@ -19,8 +19,8 @@ public interface NoteDao {
     @Query("SELECT * FROM notes WHERE name = :name")
     Category findAllNote(String name);
 
-    @Query("SELECT * FROM notes WHERE user = :username")
-    List<Note> getUserNotes(String username);
+    @Query("SELECT * FROM notes WHERE user = :userId")
+    List<Note> getUserNotes(int userId);
 
     @Query("SElECT * FROM notes WHERE id = :id")
     Note find(int id);
