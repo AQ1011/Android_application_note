@@ -22,6 +22,7 @@ public class SignUpActivity extends AppCompatActivity {
         UserDao userDao = db.userDao();
 
         Button btnSignUp = (Button) this.findViewById(R.id.btn_signup);
+        Button btnSignIn = (Button) this.findViewById(R.id.btn_signin);
         EditText edUsername = (EditText) this.findViewById(R.id.editTextSignUpEmailAddress);
         EditText edPassword = (EditText) this.findViewById(R.id.editTextSignUpPassword);
         EditText edConfirmPassword = (EditText) this.findViewById(R.id.editTextSignUpConfirmPassword);
@@ -70,6 +71,9 @@ public class SignUpActivity extends AppCompatActivity {
 
                 });
 
+        });
+        btnSignIn.setOnClickListener(v->{
+            finish();
         });
     }
 

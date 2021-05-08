@@ -58,7 +58,10 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="..." />
+                android:text="..."
+                android:backgroundTint="?attr/colorButtonNormal"
+                android:textAllCaps="false"
+                android:textColor="@android:color/black" />
         </LinearLayout>
 
         <LinearLayout
@@ -71,7 +74,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Add" />
+                android:text="Add"
+                android:backgroundTint="?attr/colorButtonNormal"
+                android:textAllCaps="false"
+                android:textColor="@android:color/black" />
 
             <Button
                 android:id="@+id/btn_note_close"
@@ -79,7 +85,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="120dp"
                 android:layout_weight="1"
-                android:text="Close" />
+                android:text="Close"
+                android:backgroundTint="?attr/colorButtonNormal"
+                android:textAllCaps="false"
+                android:textColor="@android:color/black" />
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

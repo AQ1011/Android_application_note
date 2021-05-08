@@ -91,6 +91,7 @@ public class StatusFragment extends Fragment {
             al.cancel();
         });
 
+
         FloatingActionButton fl = root.findViewById(R.id.floating_status);
         fl.setOnClickListener(v -> {
             al.show();
