@@ -22,7 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:text="Note Management System"
+            android:text="Sign Up Form"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textStyle="bold" />
 
@@ -73,6 +73,7 @@
                 android:layout_weight="1"
                 android:backgroundTint="?attr/colorButtonNormal"
                 android:text="Sign Up"
+                android:textAllCaps="false"
                 android:textColor="@android:color/black" />
 
             <Button
@@ -83,6 +84,7 @@
                 android:layout_weight="1"
                 android:backgroundTint="?attr/colorButtonNormal"
                 android:text="Sign In"
+                android:textAllCaps="false"
                 android:textColor="@android:color/black" />
         </LinearLayout>
     </LinearLayout>

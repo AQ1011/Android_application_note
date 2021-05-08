@@ -84,7 +84,6 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
         db = AppDatabase.getDatabase(holder.dateCreated.getContext());
 
 
-
         holder.dateCreated.setText("Created date: " + notes.get(position).created_date);
         holder.datePlan.setText("Plan date: " + notes.get(position).plan_date);
         holder.noteName.setText("Name: " + notes.get(position).name);

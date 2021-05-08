@@ -53,7 +53,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Change" />
+                android:text="Change"
+                android:backgroundTint="?attr/colorButtonNormal"
+                android:textAllCaps="false"
+                android:textColor="@android:color/black"/>
 
             <Button
                 android:id="@+id/btn_profile_home"
@@ -61,7 +64,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="150dp"
                 android:layout_weight="1"
-                android:text="Home" />
+                android:text="Home"
+                android:backgroundTint="?attr/colorButtonNormal"
+                android:textAllCaps="false"
+                android:textColor="@android:color/black"/>
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
